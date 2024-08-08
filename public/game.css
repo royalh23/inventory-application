@@ -1,0 +1,25 @@
+.game-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 50px;
+}
+
+.game-img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.game-bold {
+  font-weight: bold;
+}
+
+.game-info p {
+  margin-top: 20px;
+}
+
+.game-price {
+  font-size: 2rem;
+  font-weight: bold;
+}

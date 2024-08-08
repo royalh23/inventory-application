@@ -6,4 +6,11 @@ const getGames = asyncHandler(async (req, res) => {
   res.render('games', { title: 'Games', games });
 });
 
-module.exports = { getGames };
+const getGameById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const [game] = await db.getGameById(id);
+  game.publish_date = game.publish_date.toString().slice(4, 15);
+  res.render('game', { title: game.name, game });
+});
+
+module.exports = { getGames, getGameById };

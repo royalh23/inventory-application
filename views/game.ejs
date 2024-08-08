@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %>></title>
+    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/game.css" />
+    <link rel="stylesheet" href="/footer.css" />
+  </head>
+  <body>
+    <div class="base-container">
+      <%- include('partials/navbar') %>
+      <main class="game-main">
+        <div>
+          <img
+            src="<%= game.img %>"
+            alt="<%= game.name %> image"
+            class="game-img"
+          />
+        </div>
+        <div class="game-info">
+          <h2><%= game.name %></h2>
+          <p><%= game.description %></p>
+          <p class="game-price">$<%= game.price %></p>
+          <p><span class="game-bold">Rating: </span><%= game.rating %></p>
+          <p><span class="game-bold">Publisher: </span><%= game.publisher%></p>
+          <p><span class="game-bold">Released: </span><%=game.publish_date%></p>
+          <p>
+            <span class="game-bold">Units available in stock: </span><%=
+            game.in_stock %>
+          </p>
+        </div>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

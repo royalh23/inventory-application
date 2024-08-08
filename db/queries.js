@@ -10,4 +10,12 @@ async function getGames() {
   return rows;
 }
 
-module.exports = { getGenres, getGames };
+async function getGameById(id) {
+  const { rows } = await pool.query(
+    'SELECT id, img, name, description, price, rating, publisher, publish_date, in_stock FROM games WHERE id = $1',
+    [id],
+  );
+  return rows;
+}
+
+module.exports = { getGenres, getGames, getGameById };
