@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %>></title>
+    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/games.css" />
+    <link rel="stylesheet" href="/footer.css" />
+  </head>
+  <body>
+    <div class="base-container">
+      <%- include('partials/navbar') %>
+      <main class="games-main">
+        <h1 class="games-title"><%= title %></h1>
+        <ul class="games-list">
+          <% games.forEach(game => { %>
+            <li><a href="/games/<%= game.id %>" class="game-link"><%= game.name %></a></li>
+          <% }); %>
+        </ul>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

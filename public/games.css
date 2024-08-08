@@ -1,0 +1,22 @@
+.games-main {
+  padding: 50px;
+}
+
+.games-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.games-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  list-style-type: none;
+}
+
+.game-link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+}

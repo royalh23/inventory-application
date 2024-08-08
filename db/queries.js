@@ -5,4 +5,9 @@ async function getGenres() {
   return rows;
 }
 
-module.exports = { getGenres };
+async function getGames() {
+  const { rows } = await pool.query('SELECT id, name FROM games');
+  return rows;
+}
+
+module.exports = { getGenres, getGames };
