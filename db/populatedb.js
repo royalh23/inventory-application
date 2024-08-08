@@ -3,7 +3,7 @@ const { Client } = require('pg');
 const SQL = `
 CREATE TABLE IF NOT EXISTS genres (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR ( 265 ),
+  name VARCHAR ( 255 ),
   bg VARCHAR ( 255 )
 );
 
@@ -26,11 +26,17 @@ CREATE TABLE IF NOT EXISTS genres_games (
 );
 
 INSERT INTO genres (name, bg) VALUES
-  ('Action', '/action.jpg'), ('Adventure', '/adventure.jpg'), 
-  ('Fantasy', '/fantasy.jpg'), ('Open World', '/open-world.jpg'), 
-  ('Puzzle', '/puzzle.jpg'), ('RPG', '/rpg.jpg'), ('Racing', '/racing.jpg'), 
-  ('Shooter', '/shooter.jpg'), ('Simulation', '/simulation.jpg'), 
-  ('Sports', '/sports.jpg'), ('Strategy', '/strategy.jpg');
+  ('Action', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714206539/7dcaf5a7-c8da-4df1-b56c-402015935844-Action.jpg'), 
+  ('Adventure', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714206604/6a7ad902-8c8b-4760-9426-3091f1263800-Adventure.jpg'), 
+  ('Fantasy', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714471473/2b7e3215-1edf-4902-b992-bb3c20607728-skyrim-4.avif'), 
+  ('Open World', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714472182/742c09a1-d5c2-4eb2-ad0e-e2c678518a9a-0veewc8x806c1.jpg'), 
+  ('Puzzle', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714472855/843ea89d-26b1-4756-8244-3d6b75f3691e-xavi-cabrera-kn-UmDZQDjM-unsplash.jpg'), 
+  ('RPG', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1722763710/ba3500f8-691b-4bf7-8d24-ceced1e95a44-RPG_Game-512.webp'), 
+  ('Racing', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714206815/fb2d5093-7fbf-49c6-a5cb-15e44d0e32b9-Racing.jpg'), 
+  ('Shooter', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714472477/152a823c-f304-4d3c-9f0d-f17bcd62da59-MV5BMDJmYWQxMTMtNDg4NC00OTRhLWI4NGQtMGE0OGY1ZGExMmI0XkEyXkFqcGdeQXVyNDQxOTY2NDQ___V1_.jpg'), 
+  ('Simulation', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714472641/cb58cab3-0765-405d-a2e1-f495f377e9d3-3wEiZ7uALRKZov9DDxtBfM.jpg'), 
+  ('Sports', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714472990/cb9e06bd-9586-4900-a20d-9fcf72c870f9-imf6h0igxrk4hnmkcafx.jpg'), 
+  ('Strategy', 'https://res.cloudinary.com/dmt9s5xlh/image/upload/v1714405478/4489a9b0-5565-485d-a879-473239caa6f5-Strategy.avif');
 
 INSERT INTO games 
 (bg, name, description, price, rating, publisher, publish_date, in_stock) 

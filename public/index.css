@@ -1,4 +1,4 @@
-main {
+.home-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,7 @@ main {
   gap: 20px;
 }
 
-main a {
+.home-main a {
   text-decoration: none;
   color: white;
   background-color: rgb(0, 119, 255);

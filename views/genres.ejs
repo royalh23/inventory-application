@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/genres.css" />
+    <link rel="stylesheet" href="/footer.css" />
+  </head>
+  <body>
+    <div class="base-container">
+      <%- include('partials/navbar') %>
+      <main class="genres-main">
+        <h1 class="genres-title"><%= title %></h1>
+        <ul class="genreslist">
+          <% genres.forEach(genre => { %>
+            <li class="genre">
+              <img src="<%= genre.bg %>" alt="<%= genre.name %> bgs">
+              <a href="/genres/<%= genre.id %>">
+                <h2><%= genre.name%></h2>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>
