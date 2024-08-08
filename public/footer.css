@@ -1,0 +1,7 @@
+.footer {
+  display: grid;
+  place-content: center;
+  padding: 30px;
+  background-color: rgb(27, 27, 27);
+  color: white;
+}

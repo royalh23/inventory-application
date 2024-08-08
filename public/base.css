@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.base-container {
+  height: 100vh;
+  max-width: 1800px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+main {
+  flex: 1;
+}

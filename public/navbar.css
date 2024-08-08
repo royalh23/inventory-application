@@ -1,0 +1,16 @@
+.navbar {
+  padding: 30px;
+  background-color: rgb(27, 27, 27);
+}
+
+.navlist {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.navlist a {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
