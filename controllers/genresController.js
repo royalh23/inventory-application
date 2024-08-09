@@ -1,20 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const db = require('../db/queries');
-const { body, validationResult } = require('express-validator');
-
-const validateFormData = [
-  body('name')
-    .trim()
-    .notEmpty()
-    .withMessage('Name cannot be empty')
-    .isLength({ min: 1, max: 255 })
-    .withMessage('Name must be between 1 and 255 characters'),
-  body('url')
-    .trim()
-    .optional({ values: 'falsy' })
-    .isLength({ min: 1, max: 255 })
-    .withMessage('Image URL must be between 1 and 255 characters'),
-];
+const { validationResult } = require('express-validator');
+const validateGenreData = require('../middleware/validateGenreData');
 
 const getGenres = asyncHandler(async (req, res) => {
   const genres = await db.getGenres();
@@ -33,7 +20,7 @@ const newGenreGet = (req, res) => {
 };
 
 const newGenrePost = [
-  validateFormData,
+  validateGenreData,
   asyncHandler(async (req, res) => {
     const result = validationResult(req);
 
