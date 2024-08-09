@@ -79,9 +79,9 @@ const getGameById = asyncHandler(async (req, res) => {
   res.render('game', { title: game.name, game, gameGenres });
 });
 
-const newGameGet = asyncHandler(async (req, res) => {
+const newGameGet = (req, res) => {
   res.render('gameForm', { title: 'Add a game' });
-});
+};
 
 const newGamePost = [
   validateFormData,

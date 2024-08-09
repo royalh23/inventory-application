@@ -80,6 +80,13 @@ async function addGame(game) {
   await pool.query(SQL2, [game.genre, game.name]);
 }
 
+async function addGenre(genre) {
+  await pool.query('INSERT INTO genres (name, img) VALUES ($1, $2)', [
+    genre.name,
+    genre.url,
+  ]);
+}
+
 module.exports = {
   getGenres,
   getGenreById,
@@ -88,4 +95,5 @@ module.exports = {
   getGenreGames,
   getGameGenres,
   addGame,
+  addGenre,
 };

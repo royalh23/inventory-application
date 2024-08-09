@@ -1,4 +1,4 @@
-.game-form-main {
+.adding-form-main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,15 +6,15 @@
   padding: 50px;
 }
 
-.game-form {
+.adding-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 320px;
 }
 
-.game-form input,
-.game-form textarea {
+.adding-form input,
+.adding-form textarea {
   background-color: rgb(230, 230, 230);
   border: 0;
   border-radius: 10px;
@@ -23,23 +23,23 @@
   padding: 5px 10px;
 }
 
-.game-form input:focus,
-.game-form textarea:focus {
+.adding-form input:focus,
+.adding-form textarea:focus {
   outline: 0;
 }
 
-.game-form textarea {
+.adding-form textarea {
   resize: vertical;
   min-height: 70px;
 }
 
-.game-form div {
+.adding-form div {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.game-form button {
+.adding-form button {
   cursor: pointer;
   margin: 0 auto;
   width: 100px;
