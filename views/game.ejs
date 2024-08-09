@@ -14,11 +14,15 @@
       <%- include('partials/navbar') %>
       <main class="game-main">
         <div>
-          <img
-            src="<%= game.img %>"
-            alt="<%= game.name %> image"
-            class="game-img"
-          />
+          <% if (game.img === '') { %>
+            <img src="/no-image.png" alt="No image available" class="game-img">
+          <% } else { %>
+            <img
+              src="<%= game.img %>"
+              alt="<%= game.name %> image"
+              class="game-img"
+            />
+          <% } %>
         </div>
         <div class="game-info">
           <h2><%= game.name %></h2>

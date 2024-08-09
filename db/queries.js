@@ -53,6 +53,33 @@ async function getGameGenres(id) {
   return rows;
 }
 
+async function addGame(game) {
+  const SQL = `
+  INSERT INTO games
+  (img, name, description, price, rating, publisher, publish_date, in_stock) 
+  VALUES 
+    ($1, $2, $3, $4, $5, $6, $7, $8);
+  `;
+  const SQL2 = `
+  INSERT INTO genres_games
+  (genre_id, game_id)
+  VALUES
+    ((SELECT id FROM genres WHERE name = $1), (SELECT id FROM games WHERE name = $2));
+  `;
+
+  await pool.query(SQL, [
+    game.url,
+    game.name,
+    game.description,
+    game.price,
+    game.rating,
+    game.publisher,
+    game.publishDate,
+    game.inStock,
+  ]);
+  await pool.query(SQL2, [game.genre, game.name]);
+}
+
 module.exports = {
   getGenres,
   getGenreById,
@@ -60,4 +87,5 @@ module.exports = {
   getGameById,
   getGenreGames,
   getGameGenres,
+  addGame,
 };

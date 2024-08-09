@@ -1,0 +1,57 @@
+.game-form-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 50px;
+}
+
+.game-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 320px;
+}
+
+.game-form input,
+.game-form textarea {
+  background-color: rgb(230, 230, 230);
+  border: 0;
+  border-radius: 10px;
+  width: 100%;
+  min-height: 30px;
+  padding: 5px 10px;
+}
+
+.game-form input:focus,
+.game-form textarea:focus {
+  outline: 0;
+}
+
+.game-form textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.game-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.game-form button {
+  cursor: pointer;
+  margin: 0 auto;
+  width: 100px;
+  color: white;
+  background-color: rgb(0, 106, 255);
+  border: 0;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 1.2rem;
+}
+
+.errors-list li {
+  background-color: rgb(255, 0, 89);
+  color: white;
+}

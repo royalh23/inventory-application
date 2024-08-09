@@ -40,3 +40,7 @@ ul {
 main {
   flex: 1;
 }
+
+button:active {
+  transform: translateY(4px);
+}

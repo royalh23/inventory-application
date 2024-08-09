@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %>></title>
+    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/gameForm.css" />
+    <link rel="stylesheet" href="/footer.css" />
+  </head>
+  <body>
+    <div class="base-container">
+      <%- include('partials/navbar') %>
+      <main class="game-form-main">
+        <h1><%= title %></h1>
+        <% if (locals.errors) { %>
+          <ul class="errors-list">
+            <% errors.forEach(error => { %>
+              <li>
+                <%= error.msg %>
+              </li> 
+            <% }); %>
+          </ul>
+        <% } %>
+        <form action="/games/add" method="POST" class="game-form">
+          <div>
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div>
+            <label for="description">Description: </label>
+            <textarea name="description" id="description" required></textarea>
+          </div>
+          <div>
+            <label for="genre">Genre: </label>
+            <input type="text" name="genre" id="genre" required />
+          </div>
+          <div>
+            <label for="price">Price: </label>
+            <input type="number" name="price" id="price" required />
+          </div>
+          <div>
+            <label for="rating">Rating: </label>
+            <input type="number" name="rating" id="rating" required />
+          </div>
+          <div>
+            <label for="publisher">Publisher: </label>
+            <input type="text" name="publisher" id="publisher" required />
+          </div>
+          <div>
+            <label for="publishDate">Publish date: </label>
+            <input type="date" name="publishDate" id="publishDate" required />
+          </div>
+          <div>
+            <label for="inStock">Available in stock: </label>
+            <input type="number" name="inStock" id="inStock" required />
+          </div>
+          <div>
+            <label for="url">Image URL: </label>
+            <input type="text" name="url" id="url" />
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>
