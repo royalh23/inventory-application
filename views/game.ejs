@@ -23,6 +23,11 @@
         <div class="game-info">
           <h2><%= game.name %></h2>
           <p><%= game.description %></p>
+          <ul class="game-genres-list">
+            <% gameGenres.forEach(genre => { %>
+              <li><a href="/genres/<%= genre.id %>"><%= genre.name %></a></li>
+            <% }); %>
+          </ul>
           <p class="game-price">$<%= game.price %></p>
           <p><span class="game-bold">Rating: </span><%= game.rating %></p>
           <p><span class="game-bold">Publisher: </span><%= game.publisher%></p>

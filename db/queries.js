@@ -39,10 +39,25 @@ async function getGenreGames(id) {
   return rows;
 }
 
+async function getGameGenres(id) {
+  const SQL = `
+  SELECT genres.id, genres.name
+  FROM games
+  LEFT JOIN genres_games
+  ON games.id = genres_games.game_id
+  LEFT JOIN genres
+  ON genres_games.genre_id = genres.id
+  WHERE games.name = (SELECT name FROM games WHERE id = $1);
+  `;
+  const { rows } = await pool.query(SQL, [id]);
+  return rows;
+}
+
 module.exports = {
   getGenres,
   getGenreById,
   getGames,
   getGameById,
   getGenreGames,
+  getGameGenres,
 };
