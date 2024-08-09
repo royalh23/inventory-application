@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %>></title>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/navbar.css" />
     <link rel="stylesheet" href="/games.css" />
@@ -14,11 +14,15 @@
       <%- include('partials/navbar') %>
       <main class="games-main">
         <h1 class="games-title"><%= title %></h1>
-        <ul class="games-list">
-          <% games.forEach(game => { %>
-            <li><a href="/games/<%= game.id %>" class="game-link"><%= game.name %></a></li>
-          <% }); %>
+        <% if (games.length !== 0) { %>
+          <ul class="games-list">
+            <% games.forEach(game => { %>
+              <li><a href="/games/<%= game.id %>" class="game-link"><%= game.name %></a></li>
+            <% }); %>
         </ul>
+        <% } else { %>
+          <p class="games-para">No games found in this genre :/</p>
+        <% } %>
       </main>
       <%- include('partials/footer') %>
     </div>
