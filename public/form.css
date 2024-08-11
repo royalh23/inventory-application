@@ -33,10 +33,37 @@
   min-height: 70px;
 }
 
-.adding-form div {
+.adding-form > div {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.adding-form > .fieldset {
+  display: block;
+}
+
+.fieldset fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.adding-form > .fieldset input {
+  width: 20px;
+  margin: 0;
+}
+
+.adding-form > .fieldset div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fieldset fieldset > .genres {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
 }
 
 .adding-form button {
@@ -51,7 +78,15 @@
   font-size: 1.2rem;
 }
 
+.errors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .errors-list li {
-  background-color: rgb(255, 0, 89);
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgb(255, 0, 47);
   color: white;
 }

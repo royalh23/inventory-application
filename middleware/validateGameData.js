@@ -15,8 +15,7 @@ const validateGameData = [
     .withMessage('Description must be between 1 and 255 characters'),
   body('genre')
     .trim()
-    .notEmpty()
-    .withMessage('Genre cannot be empty')
+    .optional({ values: 'falsy' })
     .isLength({ min: 1, max: 255 })
     .withMessage('Genre must be between 1 and 255 characters'),
   body('price')
@@ -43,8 +42,7 @@ const validateGameData = [
     .withMessage('Publisher must be between 1 and 255 characters'),
   body('publishDate')
     .trim()
-    .notEmpty()
-    .withMessage('Publish date cannot be empty')
+    .optional({ values: 'falsy' })
     .isDate()
     .withMessage('Publish date should be in the date format')
     .isLength({ min: 1, max: 255 })

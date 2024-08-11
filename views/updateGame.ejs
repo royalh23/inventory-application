@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title><%= title %>></title>
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/navbar.css" />
     <link rel="stylesheet" href="/form.css" />
@@ -23,22 +23,26 @@
             <% }); %>
           </ul>
         <% } %>
-        <form action="/games/add" method="POST" class="adding-form">
+        <form action="/games/<%= game.id %>/update" method="POST" class="adding-form">
           <div>
             <label for="name">Name: </label>
-            <input type="text" name="name" id="name" required />
+            <input type="text" name="name" id="name" value="<%= game.name %>" required />
           </div>
           <div>
             <label for="description">Description: </label>
-            <textarea name="description" id="description" required></textarea>
+            <textarea name="description" id="description" required><%= game.description %></textarea>
           </div>
           <div class="fieldset">
             <fieldset>
-              <legend>Genres: </legend>
+              <legend>Genres (update currently not possible): </legend>
               <div class="genres">
                 <% genres.forEach(genre => { %>
                   <div>
-                    <input type="checkbox" name="genre" id="<%= genre.id %>" value="<%= genre.name %>">
+                    <% if (checkedGenres.some(checkedGenre => checkedGenre.id === genre.id)) { %>
+                      <input type="checkbox" name="genre" id="<%= genre.id %>" value="<%= genre.name %>" checked disabled>
+                    <% } else { %>
+                      <input type="checkbox" name="genre" id="<%= genre.id %>" value="<%= genre.name %>" disabled>
+                    <% } %>
                     <label for="<%= genre.id %>"><%= genre.name %></label>
                   </div>
                 <% }); %>
@@ -47,29 +51,29 @@
           </div>
           <div>
             <label for="price">Price: </label>
-            <input type="number" name="price" id="price" required />
+            <input type="number" name="price" id="price" value="<%= game.price %>" required />
           </div>
           <div>
             <label for="rating">Rating: </label>
-            <input type="number" name="rating" id="rating" required />
+            <input type="number" name="rating" id="rating" value="<%= game.rating %>" required />
           </div>
           <div>
             <label for="publisher">Publisher: </label>
-            <input type="text" name="publisher" id="publisher" required />
+            <input type="text" name="publisher" id="publisher" value="<%= game.publisher %>" required />
           </div>
           <div>
-            <label for="publishDate">Publish date: </label>
-            <input type="date" name="publishDate" id="publishDate" required />
+            <label for="publishDate">Publish date (update currently not possible): </label>
+            <input type="date" name="publishDate" id="publishDate" value="<% game.publish_date %>" disabled/>
           </div>
           <div>
             <label for="inStock">Available in stock: </label>
-            <input type="number" name="inStock" id="inStock" required />
+            <input type="number" name="inStock" id="inStock" value="<%= game.in_stock %>" required />
           </div>
           <div>
             <label for="url">Image URL: </label>
-            <input type="text" name="url" id="url" />
+            <input type="text" name="url" id="url" value="<%= game.img %>" />
           </div>
-          <button type="submit">Add</button>
+          <button type="submit">Update</button>
         </form>
       </main>
       <%- include('partials/footer') %>

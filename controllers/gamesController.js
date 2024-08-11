@@ -16,9 +16,10 @@ const getGameById = asyncHandler(async (req, res) => {
   res.render('game', { title: game.name, game, gameGenres });
 });
 
-const newGameGet = (req, res) => {
-  res.render('gameForm', { title: 'Add a game' });
-};
+const newGameGet = asyncHandler(async (req, res) => {
+  const genres = await db.getGenres();
+  res.render('gameForm', { title: 'Add a game', genres });
+});
 
 const newGamePost = [
   validateGameData,
@@ -37,4 +38,42 @@ const newGamePost = [
   }),
 ];
 
-module.exports = { getGames, getGameById, newGameGet, newGamePost };
+const updateGameGet = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const [game] = await db.getGameById(id);
+  const genres = await db.getGenres();
+  const checkedGenres = await db.getGameGenres(id);
+  res.render('updateGame', {
+    title: 'Update game data',
+    game,
+    genres,
+    checkedGenres,
+  });
+});
+
+const updateGamePost = [
+  validateGameData,
+  asyncHandler(async (req, res) => {
+    const result = validationResult(req);
+
+    if (!result.isEmpty()) {
+      return res.status(400).render('updateGame', {
+        title: 'Add a game',
+        errors: result.array(),
+      });
+    }
+
+    req.body.id = req.params.id;
+    await db.updateGame(req.body);
+    res.redirect(`/games/${req.params.id}`);
+  }),
+];
+
+module.exports = {
+  getGames,
+  getGameById,
+  newGameGet,
+  newGamePost,
+  updateGameGet,
+  updateGamePost,
+};

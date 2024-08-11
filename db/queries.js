@@ -77,13 +77,45 @@ async function addGame(game) {
     game.publishDate,
     game.inStock,
   ]);
-  await pool.query(SQL2, [game.genre, game.name]);
+
+  if (Array.isArray(game.genre)) {
+    game.genre.forEach(async (g) => {
+      await pool.query(SQL2, [g, game.name]);
+    });
+  } else {
+    await pool.query(SQL2, [game.genre, game.name]);
+  }
 }
 
 async function addGenre(genre) {
   await pool.query('INSERT INTO genres (name, img) VALUES ($1, $2)', [
     genre.name,
     genre.url,
+  ]);
+}
+
+async function updateGame(game) {
+  const SQL = `
+  UPDATE games
+  SET img = $1,
+      name = $2,
+      description = $3,
+      price = $4,
+      rating = $5,
+      publisher = $6,
+      in_stock = $7
+  WHERE id = $8;  
+  `;
+
+  await pool.query(SQL, [
+    game.url,
+    game.name,
+    game.description,
+    game.price,
+    game.rating,
+    game.publisher,
+    game.inStock,
+    game.id,
   ]);
 }
 
@@ -96,4 +128,5 @@ module.exports = {
   getGameGenres,
   addGame,
   addGenre,
+  updateGame,
 };

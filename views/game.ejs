@@ -40,6 +40,10 @@
             <span class="game-bold">Units available in stock: </span><%=
             game.in_stock %>
           </p>
+          <div class="update-delete">
+            <a href="/games/<%= game.id %>/update" class="update">Update</a>
+            <a href="/games/<%= game.id %>/delete" class="delete">Delete</a>
+          </div>
         </div>
       </main>
       <%- include('partials/footer') %>

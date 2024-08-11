@@ -4,6 +4,8 @@ const router = Router();
 
 router.get('/add', gamesController.newGameGet);
 router.post('/add', gamesController.newGamePost);
+router.get('/:id/update', gamesController.updateGameGet);
+router.post('/:id/update', gamesController.updateGamePost);
 router.get('/:id', gamesController.getGameById);
 router.get('/', gamesController.getGames);
 
