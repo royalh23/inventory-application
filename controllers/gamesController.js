@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const db = require('../db/queries');
 const { validationResult } = require('express-validator');
 const validateGameData = require('../middleware/validateGameData');
+const validateDeletePW = require('../middleware/validateDeletePW');
 
 const getGames = asyncHandler(async (req, res) => {
   const games = await db.getGames();
@@ -69,6 +70,31 @@ const updateGamePost = [
   }),
 ];
 
+const deleteGameGet = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  res.render('deleteGame', { title: 'Delete the game', id });
+});
+
+const deleteGamePost = [
+  validateDeletePW,
+  asyncHandler(async (req, res) => {
+    const result = validationResult(req);
+    const { id } = req.params;
+
+    if (!result.isEmpty()) {
+      return res.status(400).render('deleteGame', {
+        title: 'Delete the game',
+        errors: result.array(),
+        id,
+      });
+    }
+
+    await db.deleteGame(id);
+    res.redirect('/games');
+  }),
+];
+
 module.exports = {
   getGames,
   getGameById,
@@ -76,4 +102,6 @@ module.exports = {
   newGamePost,
   updateGameGet,
   updateGamePost,
+  deleteGameGet,
+  deleteGamePost,
 };

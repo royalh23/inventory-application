@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 
-const validateGameData = [
+module.exports = [
   body('name')
     .trim()
     .notEmpty()
@@ -61,5 +61,3 @@ const validateGameData = [
     .isLength({ min: 1, max: 255 })
     .withMessage('Image URL must be between 1 and 255 characters'),
 ];
-
-module.exports = validateGameData;

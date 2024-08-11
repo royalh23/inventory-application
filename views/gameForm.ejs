@@ -12,7 +12,7 @@
   <body>
     <div class="base-container">
       <%- include('partials/navbar') %>
-      <main class="adding-form-main">
+      <main class="form-main">
         <h1><%= title %></h1>
         <% if (locals.errors) { %>
           <ul class="errors-list">
@@ -23,7 +23,7 @@
             <% }); %>
           </ul>
         <% } %>
-        <form action="/games/add" method="POST" class="adding-form">
+        <form action="/games/add" method="POST" class="form">
           <div>
             <label for="name">Name: </label>
             <input type="text" name="name" id="name" required />

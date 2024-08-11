@@ -119,6 +119,31 @@ async function updateGame(game) {
   ]);
 }
 
+async function deleteGame(id) {
+  const SQL = `
+  SELECT genres.name
+  FROM games
+  INNER JOIN genres_games
+  ON games.id = genres_games.game_id
+  INNER JOIN genres
+  ON genres_games.genre_id = genres.id
+  WHERE games.id = $1;
+  `;
+  const SQL2 = `
+  DELETE FROM genres_games
+  WHERE 
+  genre_id = (SELECT id FROM genres WHERE name = $1)
+  AND
+  game_id = $2;
+  `;
+
+  const { rows } = await pool.query(SQL, [id]);
+  rows.forEach(async (genre) => {
+    await pool.query(SQL2, [genre.name, id]);
+  });
+  await pool.query(`DELETE FROM games WHERE id = $1`, [id]);
+}
+
 module.exports = {
   getGenres,
   getGenreById,
@@ -129,4 +154,5 @@ module.exports = {
   addGame,
   addGenre,
   updateGame,
+  deleteGame,
 };

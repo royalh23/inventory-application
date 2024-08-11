@@ -23,16 +23,10 @@
             <% }); %>
           </ul>
         <% } %>
-        <form action="/genres/add" method="POST" class="form">
-          <div>
-            <label for="name">Name: </label>
-            <input type="text" name="name" id="name" required />
-          </div>
-          <div>
-            <label for="url">Image URL: </label>
-            <input type="text" name="url" id="url" />
-          </div>
-          <button type="submit">Add</button>
+        <form action="/games/<%= id %>/delete" method="POST" class="form">
+          <label for="pw">Enter the admin password: </label>
+          <input type="text" name="pw" id="pw" required>
+          <button type="submit" class="delete-button">Delete</button>
         </form>
       </main>
       <%- include('partials/footer') %>
