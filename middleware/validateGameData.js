@@ -11,8 +11,8 @@ module.exports = [
     .trim()
     .notEmpty()
     .withMessage('Description cannot be empty')
-    .isLength({ min: 1, max: 255 })
-    .withMessage('Description must be between 1 and 255 characters'),
+    .isLength({ min: 1, max: 500 })
+    .withMessage('Description must be between 1 and 500 characters'),
   body('genre')
     .trim()
     .optional({ values: 'falsy' })
