@@ -12,6 +12,11 @@ async function getGenreById(id) {
   return rows;
 }
 
+async function getAllGenreDataById(id) {
+  const { rows } = await pool.query('SELECT * FROM genres WHERE id = $1', [id]);
+  return rows;
+}
+
 async function getGames() {
   const { rows } = await pool.query('SELECT id, name FROM games');
   return rows;
@@ -144,9 +149,21 @@ async function deleteGame(id) {
   await pool.query(`DELETE FROM games WHERE id = $1`, [id]);
 }
 
+async function updateGenre(genre, id) {
+  const SQL = `
+  UPDATE GENRES
+  SET name = $1,
+      img = $2
+  WHERE id = $3;
+  `;
+
+  await pool.query(SQL, [genre.name, genre.url, id]);
+}
+
 module.exports = {
   getGenres,
   getGenreById,
+  getAllGenreDataById,
   getGames,
   getGameById,
   getGenreGames,
@@ -155,4 +172,5 @@ module.exports = {
   addGenre,
   updateGame,
   deleteGame,
+  updateGenre,
 };
