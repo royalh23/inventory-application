@@ -10,6 +10,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/genres', genresRouter);
 app.use('/games', gamesRouter);
 app.use('/', indexRouter);
+app.get('*', (req, res) => {
+  res.render('notFound', { title: 'Not Found' });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
