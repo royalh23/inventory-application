@@ -42,7 +42,7 @@ npm install
 1. Populate the remote database:
 
 ```bash
-node db/populate.js <database_connection_string>
+node db/populatedb.js <database_connection_string>
 ```
 
 2. Start the server:
