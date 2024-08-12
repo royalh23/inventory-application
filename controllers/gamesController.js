@@ -64,7 +64,7 @@ const updateGamePost = [
 
     if (!result.isEmpty()) {
       return res.status(400).render('updateGame', {
-        title: 'Add a game',
+        title: 'Update game data',
         errors: result.array(),
         game,
         genres,
