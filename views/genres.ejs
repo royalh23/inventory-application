@@ -14,20 +14,24 @@
       <%- include('partials/navbar') %>
       <main class="genres-main">
         <h1 class="genres-title"><%= title %></h1>
-        <ul class="genreslist">
-          <% genres.forEach(genre => { %>
-            <li class="genre">
-              <% if (genre.img === '') { %>
-                <img src="/no-image.png" alt="No image available" class="game-img">
-              <% } else { %>
-                <img src="<%= genre.img %>" alt="<%= genre.name %> image">
-              <% } %>
-              <a href="/genres/<%= genre.id %>">
-                <h2><%= genre.name%></h2>
-              </a>
-            </li>
-          <% }); %>
-        </ul>
+        <% if (genres.length !== 0) { %>
+          <ul class="genres-list">
+            <% genres.forEach(genre => { %>
+              <li class="genre">
+                <% if (genre.img === '') { %>
+                  <img src="/no-image.png" alt="No image available" class="game-img">
+                <% } else { %>
+                  <img src="<%= genre.img %>" alt="<%= genre.name %> image">
+                <% } %>
+                <a href="/genres/<%= genre.id %>">
+                  <h2><%= genre.name%></h2>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p class="add-genres">Try <a href="/genres/add">adding</a> some genres!</p>
+        <% } %>
       </main>
       <%- include('partials/footer') %>
     </div>

@@ -55,7 +55,7 @@ async function getGameGenres(id) {
   WHERE games.name = (SELECT name FROM games WHERE id = $1);
   `;
   const { rows } = await pool.query(SQL, [id]);
-  return rows;
+  return rows[0].id === null && rows[0].name === null ? null : rows;
 }
 
 async function addGame(game) {
