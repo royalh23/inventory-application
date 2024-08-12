@@ -78,11 +78,11 @@ const updateGamePost = [
   }),
 ];
 
-const deleteGameGet = asyncHandler(async (req, res) => {
+const deleteGameGet = (req, res) => {
   const { id } = req.params;
 
   res.render('deleteGame', { title: 'Delete the game', id });
-});
+};
 
 const deleteGamePost = [
   validateAdminPW,

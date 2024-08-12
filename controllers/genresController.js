@@ -65,6 +65,31 @@ const updateGenrePost = [
   }),
 ];
 
+const deleteGenreGet = (req, res) => {
+  const { id } = req.params;
+
+  res.render('deleteGenre', { title: 'Delete the genre', id });
+};
+
+const deleteGenrePost = [
+  validateAdminPW,
+  asyncHandler(async (req, res) => {
+    const result = validationResult(req);
+    const { id } = req.params;
+
+    if (!result.isEmpty()) {
+      return res.status(400).render('deleteGenre', {
+        title: 'Delete the genre',
+        errors: result.array(),
+        id,
+      });
+    }
+
+    await db.deleteGenre(id);
+    res.redirect('/genres');
+  }),
+];
+
 module.exports = {
   getGenres,
   getGenreGames,
@@ -72,4 +97,6 @@ module.exports = {
   newGenrePost,
   updateGenreGet,
   updateGenrePost,
+  deleteGenreGet,
+  deleteGenrePost,
 };

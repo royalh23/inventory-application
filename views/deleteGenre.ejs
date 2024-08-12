@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %>></title>
+    <link rel="stylesheet" href="/base.css" />
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/footer.css" />
+  </head>
+  <body>
+    <div class="base-container">
+      <%- include('partials/navbar') %>
+      <main class="form-main">
+        <h1><%= title %></h1>
+        <% if (locals.errors) { %>
+          <ul class="errors-list">
+            <% errors.forEach(error => { %>
+              <li>
+                <%= error.msg %>
+              </li> 
+            <% }); %>
+          </ul>
+        <% } %>
+        <form action="/genres/<%= id %>/delete" method="POST" class="form">
+          <label for="pw">Enter the admin password: </label>
+          <input type="text" name="pw" id="pw" required>
+          <button type="submit" class="delete-button">Delete</button>
+        </form>
+      </main>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

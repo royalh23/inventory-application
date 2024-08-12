@@ -6,6 +6,8 @@ router.get('/add', genresController.newGenreGet);
 router.post('/add', genresController.newGenrePost);
 router.get('/:id/update', genresController.updateGenreGet);
 router.post('/:id/update', genresController.updateGenrePost);
+router.get('/:id/delete', genresController.deleteGenreGet);
+router.post('/:id/delete', genresController.deleteGenrePost);
 router.get('/:id', genresController.getGenreGames);
 router.get('/', genresController.getGenres);
 
