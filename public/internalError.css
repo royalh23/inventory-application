@@ -1,0 +1,8 @@
+.internal-err-main {
+  display: grid;
+  place-content: center;
+}
+
+.internal-err {
+  font-size: 2rem;
+}

@@ -1,6 +1,7 @@
 const genresRouter = require('./routes/genresRouter');
 const gamesRouter = require('./routes/gamesRouter');
 const indexRouter = require('./routes/indexRouter');
+const handleInternalError = require('./middleware/handleInternalError');
 const express = require('express');
 const app = express();
 
@@ -13,6 +14,7 @@ app.use('/', indexRouter);
 app.get('*', (req, res) => {
   res.render('notFound', { title: 'Not Found' });
 });
+app.use(handleInternalError);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
